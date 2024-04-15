@@ -20,7 +20,7 @@ fetch("style.json").then(resp => resp.json()).then(style => {
   const map = new maplibregl.Map({
     container: container, style: style, center: [20.3195368, 6.6590586],
     zoom: 5.4, localIdeographFontFamily: '"NotoSansJP-Regular", sans-serif',
-    maxPitch: 85
+    maxPitch: 85, hash: true
   })
   map.addControl(new maplibregl.FullscreenControl())
   map.addControl(new maplibregl.NavigationControl())
