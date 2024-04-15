@@ -16,6 +16,7 @@ body { margin: 0; }
 let protocol = new pmtiles.Protocol()
 maplibregl.addProtocol("pmtiles", protocol.tile)
 fetch("style.json").then(resp => resp.json()).then(style => {
+  const container = document.getElementById('map')
   const map = new maplibregl.Map({
     container: container, style: style, center: [20.3195368, 6.6590586],
     zoom: 5.4, localIdeographFontFamily: '"NotoSansJP-Regular", sans-serif',
