@@ -15,18 +15,18 @@ body { margin: 0; }
 <script>
 let protocol = new pmtiles.Protocol()
 maplibregl.addProtocol("pmtiles", protocol.tile)
-let style = fetch("style.json").then(resp => resp.json())
-console.log(style)
-const map = new maplibregl.Map({
-  container: container, style: style, center: [20.3195368, 6.6590586],
-  zoom: 5.4, localIdeographFontFamily: '"NotoSansJP-Regular", sans-serif',
-  maxPitch: 85
+fetch("style.json").then(resp => resp.json()).then(style => {
+  const map = new maplibregl.Map({
+    container: container, style: style, center: [20.3195368, 6.6590586],
+    zoom: 5.4, localIdeographFontFamily: '"NotoSansJP-Regular", sans-serif',
+    maxPitch: 85
+  })
+  map.addControl(new maplibregl.FullscreenControl())
+  map.addControl(new maplibregl.NavigationControl())
+  map.addControl(new maplibregl.TerrainControl({ "source": "gel-raster-dem" }))
+  map.addControl(new maplibregl.ScaleControl({ "unit": "metric" }))
+  map.addControl(new maplibregl.GeolocateControl())
 })
-map.addControl(new maplibregl.FullscreenControl())
-map.addControl(new maplibregl.NavigationControl())
-map.addControl(new maplibregl.TerrainControl({ "source": "gel-raster-dem" }))
-map.addControl(new maplibregl.ScaleControl({ "unit": "metric" }))
-map.addControl(new maplibregl.GeolocateControl())
 </script>
 </body>
 </html>
